@@ -12,7 +12,7 @@
 //   return str2;
 // }
 
-// // SOLUTION 2
+// SOLUTION 2
 // function reverse(str) {
 //   var reversed = '';
 //   for (let char of str) {
@@ -22,8 +22,15 @@
 // }
 
 // SOLUTION 3
+// function reverse(str) {
+//   return str.split('').reduce((reversed, char)=> {
+//     return char + reversed;
+//   }, '');
+// }
+
+// SOLUTION 3 simplified
 function reverse(str) {
-  
+  return str.split('').reduce((rev, char) => char + rev, '');
 }
 
 module.exports = reverse;
