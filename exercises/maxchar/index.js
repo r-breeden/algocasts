@@ -14,9 +14,8 @@ function maxChar(str) {
 
   var mostFrequentValue = 0;
   var mostFrequentKey;
-  var keysList = Object.keys(map);
 
-  for (let key of keysList) {
+  for (let key in map) {
     if(mostFrequentValue < map[key]){
       mostFrequentValue = map[key];
       mostFrequentKey = key;
