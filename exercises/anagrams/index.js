@@ -10,30 +10,14 @@
 
 // RAB SOLUTION
 function anagrams(stringA, stringB) {
-  let string1 = stringA.replace(/[^\w]/g, " ").toLowerCase();
-  const string2 = stringB.replace(/[^\w]/g, " ").toLowerCase();
-
-  const string1Map = {};
-  const string2Map = {};
+  let string1Map = {};
+  let string2Map = {};
  
-  for (let el of string1){
-    if (!string1Map.el) {
-      string1Map[el] = 1;
-    } else {
-      string1Map[el]++;
-    }
-  }
+  string1Map = createMapFromString(stringA);
+  string2Map = createMapFromString(stringB);
 
-   for (let el of string2){
-    if (!string2Map.el) {
-      string2Map[el] = 1;
-    } else {
-      string2Map[el]++;
-    }
-  }
-
-  if ( Object.keys(string1Map).length !== Object.keys(string2Map).length) return false;
-
+  if (Object.keys(string1Map).length !== Object.keys(string2Map).length) return false; 
+  
   for (let prop in string1Map) {
     if (!string2Map[prop] || string2Map[prop] !== string1Map[prop]) {
       return false;
@@ -41,6 +25,18 @@ function anagrams(stringA, stringB) {
   }
 
   return true;
+}
+
+function createMapFromString(str) {
+  obj = {}
+
+  for (let el of str.replace(/[^\w]/g, " ").toLowerCase()){
+    if (!str[el]) {
+      obj[el] = obj[el] + 1 || 1;
+    }
+  }
+
+  return obj;
 }
 
 module.exports = anagrams;
