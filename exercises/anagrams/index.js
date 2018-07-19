@@ -19,7 +19,7 @@ function anagrams(stringA, stringB) {
   if (Object.keys(string1Map).length !== Object.keys(string2Map).length) return false; 
   
   for (let prop in string1Map) {
-    if (!string2Map[prop] || string2Map[prop] !== string1Map[prop]) {
+    if (string2Map[prop] !== string1Map[prop]) {
       return false;
     }
   }
