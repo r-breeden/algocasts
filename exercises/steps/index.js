@@ -17,15 +17,37 @@
 //       '### '
 //       '####'
 
-function steps(n) {
-  let arr = [];
-  for (let i = 0; i < n; i++) {
-    arr.push(' ');
+// RAB SOLUTION
+// function steps(n) {
+//   let arr = [];
+//   for (let i = 0; i < n; i++) {
+//     arr.push(' ');
+//   }
+
+//   for (let x = 0; x < n; x++) {
+//     arr[x] = '#'
+//     console.log(arr.join(''));
+//   }
+// }
+
+// SOLUTION 2 RECURSIVE
+function steps(n, row = 0, stair = '') {
+  if (n === row) {
+    return;
   }
 
-  for (let x = 0; x < n; x++) {
-    arr[x] = '#'
-    console.log(arr.join(''));
+  if (n === stair.length) {
+    console.log(stair);
+    steps(n, row + 1);
+    return;
+  }
+
+  if (stair.length <= row) {
+    stair += '#';
+    steps(n, row, stair);
+  } else {
+    stair += ' ';
+    steps(n, row, stair);
   }
 }
 
